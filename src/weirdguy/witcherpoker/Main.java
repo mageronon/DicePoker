@@ -51,13 +51,17 @@ public class Main extends GraphicsProgram {
 			}
 		}
 		
-		for(int i = 0; i < 2; i++) {
-			chooseWinner(i);
-		}
+			chooseWinner();
+		
 		
 	}
 	
-	public void chooseWinner(int pl){
+	public void chooseWinner(){
+
+		int b = 0;
+		int a = 0;
+		int k = 0;
+		for(int pl = 0; pl < 2; pl++) {
 		int qMax = 0;
 		int[] counts = new int[6];
 		
@@ -123,30 +127,34 @@ public class Main extends GraphicsProgram {
 				}	
 			
 	}
-		int k = 0;
 		for (int i = 0; i < counts.length; i++) {
 			
             if (counts[i] == 5) {
                 resValue = "Five of a kind ";
-                k = 9;
+                k = 76 + i + 1;
+                // 76 - 82
                 break;
             } else if (counts[i] == 4) {
                 resValue = "Four of a kind ";
-                k = 8;
+                k = 69 + i + 1;
+                // 69 - 75
                 break;
             } else if (counts[i] == 3) {
                 resValue = "Three of a Kind ";
-                k = 4;
+                k = 41 + i + 1;
+                // 41 - 47
                 for (int j = i; j < counts.length; j++) {
                     if (counts[j]==2) {
                         resValue = "Full House ";
-                        k = 7;
+                        k = 62 + i + 1;
+                        // 62 - 68
                         break;
                     }
                     for (int d = i + 1; d < counts.length; d++) {
                         if (counts[d]==2) {
                             resValue = "Full House ";
-                            k = 7;
+                            k = 62 + i + 1;
+                            // 62 - 68
                             break;
                         }
                     }
@@ -154,25 +162,33 @@ public class Main extends GraphicsProgram {
                 break;
             } else if (counts[i] == 2) {
                  resValue = "One Pair ";
-                 k = 2;
+                 k = 7 + (i + 1);
+                 // 7 - 13
                  for (int j = i; j < counts.length; j++) {
                      if (counts[j] == 3) {
                          resValue = "Full House ";
-                         k = 7;
+                         k = 62 + i + 1;
+                         // 62 - 68
                          break;
                      }
                  }
                  for (int d = i + 1; d < counts.length; d++) {
                      if (counts[d]==2) {
                          resValue = "Full House ";
-                         k = 7;
+                         k = 62 + i + 1;
+                         // 62 - 68
                          break;
                      }
                  }
+                 
+                 
                 for (int j = i + 1; j < counts.length; j++) {
                     if (counts[j] == 2) {
+                    	k = 14;
                         resValue = "Two Pairs ";
-                        k = 3;
+                        k += 14 + i + 1;
+                        // 14 - 20
+                       //34 - 40
                         break;
                     }
                 }
@@ -180,23 +196,37 @@ public class Main extends GraphicsProgram {
             } else {
             	if(fiveOf == 5){
         			resValue="Five High Straight ";
-        			 k = 5;
+        			 k = 48 + i + 1;
+        			 // 48 - 54
         		}else if(sixOf == 6){
         			resValue=" Six High Straight ";
-        			 k = 6;
+        			 k = 55 + i + 1;
+        			 // 55 - 61
         		}else{
                 resValue = "Highest Card ";
-                k = 1;
+                k = i + 1;
+                //1 - 6
         		}
             }
         }
 		
-		System.out.println(resValue);
-		System.out.println(k);
-		System.out.println(fiveOf);
+		System.out.println(resValue +"\n");
+//		System.out.println(k);
+		if(pl == 0){
+		b = k ;
+		}
+		if(pl == 1){
+			a = k;
+		}
+		}
 
-	
-		
+//		System.out.println(b);
+//		System.out.println(a);
+		if(b>a){
+			System.out.println("First player has won");
+		}else{
+			System.out.println("Second player has won");
+		}
 //		IODialog dialog = new IODialog();
 //		dialog.println(resValue);
 	}
