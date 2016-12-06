@@ -1,4 +1,4 @@
-package weirdguy.witcherpoker;
+package mageronon.witcherpoker;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

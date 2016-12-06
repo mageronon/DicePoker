@@ -1,4 +1,4 @@
-package weirdguy.witcherpoker;
+package mageronon.witcherpoker;
 
 import java.awt.Color;
 
